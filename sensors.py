@@ -242,6 +242,8 @@ class Server(BaseHTTPRequestHandler):
             pms_data = pms5003.read()
         except pmsReadTimeoutError:
             logging.warn("Failed to read PMS5003")
+        except:
+            logging.warn("PMS5003 read failure")
         else:
             pm1 = float(pms_data.pm_ug_per_m3(1.0))
             pm25 = float(pms_data.pm_ug_per_m3(2.5))
@@ -418,6 +420,8 @@ def display():
                     data = pms5003.read()
                 except pmsReadTimeoutError:
                     logging.warn("Failed to read PMS5003")
+                except:
+                    logging.warn("PMS5003 read failure")
                 else:
                     data = float(data.pm_ug_per_m3(1.0))
                     display_text(variables[mode], data, unit)
@@ -429,6 +433,8 @@ def display():
                     data = pms5003.read()
                 except pmsReadTimeoutError:
                     logging.warn("Failed to read PMS5003")
+                except:
+                    logging.warn("PMS5003 read failure")
                 else:
                     data = float(data.pm_ug_per_m3(2.5))
                     display_text(variables[mode], data, unit)
@@ -440,6 +446,8 @@ def display():
                     data = pms5003.read()
                 except pmsReadTimeoutError:
                     logging.warn("Failed to read PMS5003")
+                except:
+                    logging.warn("PMS5003 read failure")
                 else:
                     data = float(data.pm_ug_per_m3(10))
                     display_text(variables[mode], data, unit)
@@ -474,6 +482,8 @@ def display():
                     pms_data = pms5003.read()
                 except pmsReadTimeoutError:
                     logging.warn("Failed to read PMS5003")
+                except:
+                    logging.warn("PMS5003 read failure")
                 else:
                     save_data(7, float(pms_data.pm_ug_per_m3(1.0)))
                     save_data(8, float(pms_data.pm_ug_per_m3(2.5)))
